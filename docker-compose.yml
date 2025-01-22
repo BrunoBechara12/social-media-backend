@@ -1,0 +1,33 @@
+version: "3.8"
+
+name: social-media 
+
+services:
+  db:
+    container_name: social-media-db
+    image: postgres:16-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_DB=polls
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  api:
+    container_name: social-media-api
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgresql://${DB_USER}:${DB_PASSWORD}@db:5432/polls
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  postgres_data:
