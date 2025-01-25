@@ -1,11 +1,7 @@
-version: "3.8"
-
-name: social-media 
-
 services:
-  db:
+  database:
     container_name: social-media-db
-    image: postgres
+    image: postgres:16
     restart: always
     ports:
       - "5432:5432"
@@ -19,17 +15,23 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   api:
-    container_name: social-media-api
+    container_name: social-media
     build: 
       context: .
       dockerfile: Dockerfile
     ports:
       - "3000:3000"
     environment:
-      -  DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}?schema=public
+      -  DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@database:5432/${POSTGRES_DB}?schema=public
+      - JWT_SECRET=${JWT_SECRET}
+      - JWT_TOKEN_AUDIENCE=${JWT_TOKEN_AUDIENCE}
+      - JWT_TOKEN_ISSUER=${JWT_TOKEN_ISSUER}
+      - JWT_TTL=${JWT_TTL}
     depends_on:
-      - db
+      - database
     restart: always
+    volumes:
+      - ./tsconfig.json:/app/tsconfig.json
 
 volumes:
   postgres_data:
