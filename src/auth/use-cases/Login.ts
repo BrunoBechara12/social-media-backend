@@ -15,9 +15,7 @@ export class Login {
     @Inject(jwtConfig.KEY)
     private readonly jwtConfiguration: ConfigType<typeof jwtConfig>,
     private readonly jwtService: JwtService
-  ) {
-    console.log(process.env.JWT_SECRET)
-  }
+  ) {}
 
   async execute(request: LoginUserDto): Promise<any> {
     const user = await this.authRepository.login(request);
