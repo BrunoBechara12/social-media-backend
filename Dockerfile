@@ -8,7 +8,6 @@ RUN npm install --quiet --no-optional --no-fund --loglevel=error
 
 COPY . .
 
-RUN npx prisma generate
 RUN npm run build
 
 FROM node:20-alpine
@@ -19,7 +18,6 @@ WORKDIR /app
 COPY --chown=node:node --from=builder /app/dist ./dist
 COPY --chown=node:node --from=builder /app/node_modules ./node_modules
 COPY --chown=node:node --from=builder /app/package*.json ./
-COPY --chown=node:node --from=builder /app/prisma ./prisma
 
 EXPOSE 3000
 
