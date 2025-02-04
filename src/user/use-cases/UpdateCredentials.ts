@@ -1,8 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { HashServiceProtocol } from 'src/auth/infra/adapters/hash/hash.service';
-import { UpdateProfileDto } from '../infra/dtos/UpdateProfile.dto';
+import { HashServiceProtocol } from '../../auth/infra/adapters/hash/hash.service';
 import { UserRepository } from './ports/User.repository';
-import { IsNullOrEmpty } from 'src/helpers/IsNullOrEmpty';
+import { IsNullOrEmpty } from '../../helpers/IsNullOrEmpty';
 import { UpdateCredentialsDto } from '../infra/dtos/UpdateCredentials.dto';
 
 @Injectable()

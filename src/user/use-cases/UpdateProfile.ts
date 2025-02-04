@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { UpdateProfileDto } from '../infra/dtos/UpdateProfile.dto';
 import { UserRepository } from './ports/User.repository';
-import { IsNullOrEmpty } from 'src/helpers/IsNullOrEmpty';
+import { IsNullOrEmpty } from '../../helpers/IsNullOrEmpty';
 
 @Injectable()
 export class UpdateProfile {
