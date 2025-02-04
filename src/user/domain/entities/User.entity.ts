@@ -1,34 +1,30 @@
-import { Replace } from "src/helpers/Replace";
+import { Replace } from 'src/helpers/Replace';
 
-interface UserProps {
+export interface UserProps {
   id: number;
   email: string;
   username: string;
-  password: string | null;
-  bio: string | null;
-  avatar: string | null;
+  password: string;
+  bio?: string | null;
+  avatar?: string | null;
   createdAt: Date;
-  updatedAt: Date | null;
+  updatedAt?: Date | null;
 }
 
 export class User {
   private data: UserProps;
 
   constructor(
-    props: Replace<UserProps, { createdAt?: Date; password?: string | null; bio?: string | null; avatar?: string | null; updatedAt?: Date | null }>,
+    props: Replace<UserProps, { createdAt?: Date; updatedAt?: Date | null }>
   ) {
     this.data = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
-      password: props.password ?? null,
-      bio: props.bio ?? null,
-      avatar: props.avatar ?? null,
-      updatedAt: props.updatedAt ?? null,
     };
   }
 
   public get id(): number {
-    return this.id;
+    return this.data.id;
   }
 
   public set email(email: string) {
@@ -49,12 +45,12 @@ export class User {
     return this.data.username;
   }
 
-  public set password(password: string | null) {
+  public set password(password: string) {
     this.data.password = password;
     this.updateTimestamp();
   }
 
-  public get password(): string | null {
+  public get password(): string {
     return this.data.password;
   }
 
@@ -63,7 +59,7 @@ export class User {
     this.updateTimestamp();
   }
 
-  public get bio(): string | null {
+  public get bio(): string | null | undefined {
     return this.data.bio;
   }
 
@@ -72,7 +68,7 @@ export class User {
     this.updateTimestamp();
   }
 
-  public get avatar(): string | null {
+  public get avatar(): string | null | undefined {
     return this.data.avatar;
   }
 
@@ -80,7 +76,7 @@ export class User {
     return this.data.createdAt;
   }
 
-  public get updatedAt(): Date | null {
+  public get updatedAt(): Date | null | undefined {
     return this.data.updatedAt;
   }
 
