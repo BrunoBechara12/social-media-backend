@@ -1,5 +1,5 @@
 import { HttpException, HttpStatus, Inject, Injectable } from "@nestjs/common";
-import { AuthRepository } from "src/auth/use-cases/ports/Auth.repository";
+import { AuthRepository } from "../../auth/use-cases/ports/Auth.repository";
 import { LoginUserDto } from "src/auth/infra/dtos/LoginUser.dto";
 import { HashServiceProtocol } from "../infra/adapters/hash/hash.service";
 import jwtConfig from "../infra/adapters/config/jwt.config";
