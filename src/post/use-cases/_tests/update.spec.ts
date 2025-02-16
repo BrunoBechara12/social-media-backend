@@ -3,7 +3,7 @@ import { PostMapper } from "../../domain/mappers/Post.mapper";
 import { MakePost } from "../../../../test/factories/Post.factory";
 import { InMemoryPostRepository } from "../../../../test/repositories/InMemoryPost.repository";
 import { HttpException, HttpStatus } from "@nestjs/common";
-import { UpdatePostDto } from "../../../../src/post/infra/dtos/UpdatePost.dto";
+import { UpdatePostDto } from "../../infra/dtos/UpdatePost.dto";
 
 describe('Update post', () => {
   let updatePost: Update;

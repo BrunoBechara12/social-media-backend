@@ -75,7 +75,7 @@ export class InMemoryPostRepository implements PostRepository {
     const posts = this.posts.filter(post => post.authorId === authorId);
 
     if (posts.length === 0) {
-      throw new HttpException('Post não encontrado para o id informado', HttpStatus.NOT_FOUND);
+      throw new HttpException('O usuario ainda não realizou nenhum post', HttpStatus.NOT_FOUND);
     }
 
     return posts;
