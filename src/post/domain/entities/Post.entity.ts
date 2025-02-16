@@ -7,6 +7,7 @@ export interface PostProps {
   authorId: number;
   createdAt: Date;
   updatedAt?: Date | null;
+  likes?: number[];
 }
 
 export class Post {
