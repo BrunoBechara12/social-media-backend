@@ -1,5 +1,5 @@
 
-import { IsNullOrEmpty } from '../../../src/helpers/IsNullOrEmpty';
+import { IsNullOrEmpty } from '../../helpers/IsNullOrEmpty';
 import { UpdatePostDto } from '../infra/dtos/UpdatePost.dto';
 import { PostRepository } from './ports/Post.repository';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
