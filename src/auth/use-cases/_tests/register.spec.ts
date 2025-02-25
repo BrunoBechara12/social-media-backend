@@ -1,7 +1,7 @@
-import { InMemoryAuthRepository } from "../../../../test/repositories/InMemoryAuth.repository";
+import { InMemoryAuthRepository } from "@test/repositories/InMemoryAuth.repository";
 import { Register } from "../Register";
 import { HashServiceProtocol } from "../../infra/adapters/hash/hash.service";
-import { MakeRegisterUser } from "../../../../test/factories/Auth.factory";
+import { MakeRegisterUser } from "@test/factories/Auth.factory";
 import { HttpException, HttpStatus } from "@nestjs/common";
 
 describe('Register user', () => {

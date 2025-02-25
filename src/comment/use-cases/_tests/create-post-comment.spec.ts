@@ -1,5 +1,5 @@
-import { MakeComment } from "../../../../test/factories/Comment.factory";
-import { InMemoryCommentRepository } from "../../../../test/repositories/InMemoryComment.repository";
+import { MakeComment } from "@test/factories/Comment.factory";
+import { InMemoryCommentRepository } from "@test/repositories/InMemoryComment.repository";
 import { Create } from "../Create";
 
 

@@ -1,8 +1,8 @@
-import { InMemoryPostRepository } from "../../../../test/repositories/InMemoryPost.repository";
+import { InMemoryPostRepository } from "@test/repositories/InMemoryPost.repository";
 import { Create } from "../Create";
-import { MakePost } from "../../../../test/factories/Post.factory";
-import { InMemoryUserRepository } from "../../../../test/repositories/InMemoryUser.repository";
-import { MakeUser } from "../../../../test/factories/User.factory";
+import { MakePost } from "@test/factories/Post.factory";
+import { InMemoryUserRepository } from "@test/repositories/InMemoryUser.repository";
+import { MakeUser } from "@test/factories/User.factory";
 import { UserMapper } from "../../../user/domain/mappers/User.mapper";
 import { HttpException, HttpStatus } from "@nestjs/common";
 

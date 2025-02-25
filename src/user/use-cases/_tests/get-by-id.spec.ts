@@ -1,5 +1,5 @@
-import { MakeUser } from "../../../../test/factories/User.factory";
-import { InMemoryUserRepository } from "../../../../test/repositories/InMemoryUser.repository";
+import { MakeUser } from "@test/factories/User.factory";
+import { InMemoryUserRepository } from "@test/repositories/InMemoryUser.repository";
 import { GetById } from "../GetById";
 import { UserMapper } from "../../domain/mappers/User.mapper";
 

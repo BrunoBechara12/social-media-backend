@@ -1,6 +1,6 @@
 import { Like } from '../Like';
-import { InMemoryLikeRepository } from '../../../../test/repositories/InMemoryLike.repository';
-import { MakePost } from '../../../../test/factories/Post.factory';
+import { InMemoryLikeRepository } from '@test/repositories/InMemoryLike.repository';
+import { MakePost } from '@test/factories/Post.factory';
 import { ToggleLikeDto } from 'src/like/infra/dtos/ToggleLike.dto';
 
 describe('Like post', () => {

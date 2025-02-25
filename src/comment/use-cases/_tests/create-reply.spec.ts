@@ -1,5 +1,5 @@
-import { InMemoryCommentRepository } from "../../../../test/repositories/InMemoryComment.repository";
-import { MakeComment } from "../../../../test/factories/Comment.factory";
+import { InMemoryCommentRepository } from "@test/repositories/InMemoryComment.repository";
+import { MakeComment } from "@test/factories/Comment.factory";
 import { CreateReply } from "../CreateReply";
 
 describe('Create Reply', () => {

@@ -1,5 +1,5 @@
-import { RegisterUserDto } from "../../src/auth/infra/dtos/RegisterUser.dto";
-import { LoginUserDto } from "../../src/auth/infra/dtos/LoginUser.dto";
+import { RegisterUserDto } from "@src/auth/infra/dtos/RegisterUser.dto";
+import { LoginUserDto } from "@src/auth/infra/dtos/LoginUser.dto";
 
 export function MakeRegisterUser(overrides?: RegisterUserDto) {
   return {

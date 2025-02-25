@@ -1,9 +1,9 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { InMemoryAuthRepository } from '../../../../test/repositories/InMemoryAuth.repository';
+import { InMemoryAuthRepository } from '@test/repositories/InMemoryAuth.repository';
 import { Login } from '../Login';
 import { HashServiceProtocol } from '../../infra/adapters/hash/hash.service';
-import { MakeLoginUser, MakeRegisterUser } from '../../../../test/factories/Auth.factory';
+import { MakeLoginUser, MakeRegisterUser } from '@test/factories/Auth.factory';
 
 describe('Login user', () => {
   let login: Login;

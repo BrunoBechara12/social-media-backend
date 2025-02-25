@@ -1,4 +1,4 @@
-import { Post, PostProps } from "../../src/post/domain/entities/Post.entity";
+import { Post, PostProps } from "@src/post/domain/entities/Post.entity";
 
 type Override = Partial<PostProps>;
 

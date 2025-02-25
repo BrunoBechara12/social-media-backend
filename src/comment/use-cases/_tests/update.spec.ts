@@ -1,6 +1,6 @@
-import { InMemoryCommentRepository } from "../../../../test/repositories/InMemoryComment.repository";
+import { InMemoryCommentRepository } from "@test/repositories/InMemoryComment.repository";
 import { Update } from "../Update";
-import { MakeComment } from "../../../../test/factories/Comment.factory";
+import { MakeComment } from "@test/factories/Comment.factory";
 import { UpdateCommentDto } from "src/comment/infra/dtos/UpdateComment.dto";
 
 describe('Update comment', () => {

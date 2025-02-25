@@ -1,7 +1,7 @@
 import { GetById } from "../GetById";
 import { PostMapper } from "../../domain/mappers/Post.mapper";
-import { InMemoryPostRepository } from "../../../../test/repositories/InMemoryPost.repository";
-import { MakePost } from "../../../../test/factories/Post.factory";
+import { InMemoryPostRepository } from "@test/repositories/InMemoryPost.repository";
+import { MakePost } from "@test/factories/Post.factory";
 import { HttpException, HttpStatus } from "@nestjs/common";
 
 describe('Get post by id', () => {

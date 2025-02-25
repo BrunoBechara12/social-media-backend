@@ -1,8 +1,8 @@
 
 import { GetAll } from "../GetAll";
 import { PostMapper } from "../../domain/mappers/Post.mapper";
-import { InMemoryPostRepository } from "../../../../test/repositories/InMemoryPost.repository";
-import { MakePost } from "../../../../test/factories/Post.factory";
+import { InMemoryPostRepository } from "@test/repositories/InMemoryPost.repository";
+import { MakePost } from "@test/factories/Post.factory";
 
 describe('Get all posts', () => {
   it('Should be able to get all posts', async () => {

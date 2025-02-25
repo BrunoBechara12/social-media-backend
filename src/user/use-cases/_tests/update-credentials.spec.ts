@@ -1,5 +1,5 @@
-import { MakeUser } from "../../../../test/factories/User.factory";
-import { InMemoryUserRepository } from "../../../../test/repositories/InMemoryUser.repository";
+import { MakeUser } from "@test/factories/User.factory";
+import { InMemoryUserRepository } from "@test/repositories/InMemoryUser.repository";
 import { UpdateCredentials } from "../UpdateCredentials";
 import { UserMapper } from "../../domain/mappers/User.mapper";
 import { HttpException, HttpStatus } from "@nestjs/common";

@@ -1,8 +1,8 @@
 
 import { Delete } from "../Delete";
 import { PostMapper } from "../../domain/mappers/Post.mapper";
-import { MakePost } from "../../../../test/factories/Post.factory";
-import { InMemoryPostRepository } from "../../../../test/repositories/InMemoryPost.repository";
+import { MakePost } from "@test/factories/Post.factory";
+import { InMemoryPostRepository } from "@test/repositories/InMemoryPost.repository";
 
 describe('Delete post', () => {
   it('Should be able to delete a post', async () => {

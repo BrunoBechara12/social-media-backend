@@ -1,4 +1,4 @@
-import { Comment, CommentProps } from "../../src/comment/domain/entities/Comment.entity";
+import { Comment, CommentProps } from "@src/comment/domain/entities/Comment.entity";
 
 type Override = Partial<CommentProps>;
 
