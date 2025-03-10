@@ -4,15 +4,25 @@ import { CreatePostDto } from "../dtos/CreatePost.dto";
 import { UpdatePostDto } from "../dtos/UpdatePost.dto";
 import { PrismaService } from "src/infra/database/database.service";
 import { Injectable } from "@nestjs/common";
+import { PostResponseDto } from "../dtos/PostResponse.dto";
 
 @Injectable()
 export class PrismaPostRepository implements PostRepository {
   constructor(private prismaService: PrismaService){}
   
-  async getAll(): Promise<Post[]> {
-    const posts = await this.prismaService.post.findMany()
+  async getAll(): Promise<PostResponseDto[]> {
+    const posts = await this.prismaService.post.findMany({
+      include: {
+        likes: true,
+        comments: true
+      }
+    })
 
-    return posts
+    return posts.map(post => ({
+      ...post,
+      likes: post.likes.length,
+      comments: post.comments.length
+    }))
   }
 
   async getById(id: number): Promise<Post | null> {

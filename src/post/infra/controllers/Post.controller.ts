@@ -20,6 +20,7 @@ import { GetAllByAuthor } from 'src/post/use-cases/GetAllByAuthor';
 import { Delete as DeletePost } from 'src/post/use-cases/Delete';
 import { UpdatePostDto } from '../dtos/UpdatePost.dto';
 import { Update } from 'src/post/use-cases/Update';
+import { PostResponseDto } from '../dtos/PostResponse.dto';
 
 @Controller('post')
 export class PostController {
@@ -34,7 +35,7 @@ export class PostController {
 
   @UseGuards(AuthTokenGuard)
   @Get('getAll')
-  async GetAll(): Promise<post[]> {
+  async GetAll(): Promise<PostResponseDto[]> {
     const posts = await this.getAllPosts.execute();
 
     return posts
