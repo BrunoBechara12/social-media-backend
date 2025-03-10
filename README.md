@@ -1,25 +1,20 @@
 # API for a Social Network
 
-### ⚠️ Project Under Development
-
-Thank you for visiting! Please note that this project is currently under active development and is subject to changes and improvements. Features, functionality, and documentation may evolve as the project progresses.
-
-Thank you for visiting!
-
 
 ## Functional Requirements
 
 - Users can sign up and log in.
 - Users can view posts from other users.
 - Users can create posts.
-- Users can comment on posts.
+- Users can edit their content in posts.
+- Users can comment on posts and reply to other comments.
 - Users can like posts.
-- Users can edit their profiles.
+- Users can edit their profiles and their credentials.
 
-## Non Functional Requirements
+##  Non-Functional Requirements
 
 - Use bcrypt to securely hash user passwords.
-- Use PostgreSQL for database.
+- Use PostgreSQL for the database.
 - Use PrismaORM for database management and migrations.
 - Use Node.js and NestJS for building the backend services.
 - Use Docker to containerize the services for consistent deployment.
@@ -40,29 +35,31 @@ Thank you for visiting!
 
 ### User
 
-- signup user (public)
-- login user (public)
-- edit profile (public)
+- Sign up user 
+- Login user 
+- Edit profile 
+- Edit credentials 
 
 ### Post
 
-- view posts (public)
-- create post (Logged in)
-- edit post (Logged in)
-- delete post (Logged in)
-- like posts (Logged in)
+- View posts 
+- Create post 
+- Edit post 
+- Delete post 
 
 ### Comment
 
-- comment post (Logged in)
-- Reply to a comment (Logged in)
-- edit a comment (Logged in)
-- delete a comment (Logged in)
+- View comments
+- Create comment 
+- Reply a comment 
+- Edit comment 
+- Delete comment
 
 ### Like
 
-- Like a post (Logged in)
-- Unlike a post (Logged in)
+- View how many likes a post has 
+- Like a post 
+- Unlike a post 
 
 ## Running the project locally
 
@@ -70,61 +67,82 @@ Thank you for visiting!
 
 - Docker and Docker Compose installed.
 
-### 1. Setup .env file
+# Project Setup Guide
 
-Create a file called .env on project's root folder, and put this model:
+## 1. Set up the .env file
+
+Create a file called `.env` in the project's root folder and add the following content:
 
 ```
-# database
-POSTGRES_USER=demo_user
-POSTGRES_PASSWORD=secure_password
-POSTGRES_DB=social_media
+# Database configuration
+POSTGRES_USER=your_postgres_user
+POSTGRES_PASSWORD=your_secure_password
+POSTGRES_DB=your_database_name
 
-# connection with PrismaORM
+# Connection with PrismaORM
 DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@localhost:5432/${POSTGRES_DB}?schema=public"
 
 # JWT configuration
-JWT_SECRET=my_random_secret_key
+JWT_SECRET=
 JWT_TOKEN_AUDIENCE=http://localhost:3000
 JWT_TOKEN_ISSUER=http://localhost:3000
-JWT_TTL="30d"
+JWT_TTL="60d"
 ```
 
-### 2. Starting the services
+ **Important Note**: The JWT_SECRET should be a strong, secure value. You can generate one using an MD5 hash generator or another secure method. 
 
-Tu run the project just go to the project's root folder and run:
+## 2. Starting the Services
+
+To run the project, go to the project's root folder and run:
 
 ```
 docker compose up -d
 ```
 
-#### This will start the api on http://localhost:3000 and the database at localhost:5432
+### After Initialization:
+- The API will be available at: http://localhost:3000
+- The PostgreSQL database will be available at: localhost:5432
+
+## 3. Verifying the Installation
+
+To verify that all services are running correctly, you can use:
+
+```
+docker compose ps
+```
+
+All containers should have the status "Up".
 
 ## Api Endpoints
 
 ## User
 
-- POST /auth/register - (public)
-- POST /auth/login - (public)
-- PUT /users/profile - (authenticated)
+- POST /auth/register 
+- POST /auth/login 
+- GET  /user/getById/:userId
+- PUT  /user/updateProfile
+- PUT  /user/updateCredentials
 
 ## Post
 
-- GET /posts - (public)
-- POST /posts - (authenticated)
-- PUT /posts/:postId - (authenticated)
-- DELETE /posts/:postId - (authenticated)
-- POST /posts/:postId/like - (authenticated)
+- GET /post/getAll 
+- GET /post/getById/:postId
+- GET /post/getAllByAuthor/:authorId 
+- POST /post/create 
+- PUT /post/update
+- DELETE /post/delete/:postId
 
 ## Comment
 
-- POST /comments/:postId/comments - (authenticated)
-- POST /comments/:commentId/reply - (authenticated)
-- PUT /comments/:commentId - (authenticated)
-- DELETE /comments/:commentId - (authenticated)
+- POST /comment/createComment
+- POST /comment/createReply
+- PUT /comment/updateComment
+- GET /comment/getAllByPost/:postId
+- DELETE /comment/delete/:commentId
 
 ## Like
 
-- POST /likes/:postId - (authenticated)
-- DELETE /likes/:postId - (authenticated)
+- POST /like/like 
+- POST /like/unlike 
+- GET /like/getAllByPost/:postId
 
