@@ -61,7 +61,7 @@
 - Like a post 
 - Unlike a post 
 
-## Running the project locally
+# Running the project locally
 
 ### Requirements
 
@@ -91,12 +91,19 @@ JWT_TTL="60d"
 
  **Important Note**: The JWT_SECRET should be a strong, secure value. You can generate one using an MD5 hash generator or another secure method. 
 
-## 2. Starting the Services
+## 2. Initialize the Project
 
-To run the project, go to the project's root folder and run:
+Run these commands in sequence:
 
-```
+```bash
+# Generate Prisma Client based on your schema
+npx prisma generate
+
+# Start all Docker containers in detached mode
 docker compose up -d
+
+# Apply all pending database migrations
+npx prisma migrate deploy
 ```
 
 ### After Initialization:
@@ -107,9 +114,11 @@ docker compose up -d
 
 To verify that all services are running correctly, you can use:
 
-```
-docker compose ps
-```
+#### For **production** environment
+```docker compose -f docker-compose.prod.yml ps```
+
+#### For **development** environment
+```docker compose -f docker-compose.dev.yml ps```
 
 All containers should have the status "Up".
 
