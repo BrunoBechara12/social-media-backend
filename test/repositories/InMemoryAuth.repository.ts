@@ -15,10 +15,15 @@ export class InMemoryAuthRepository implements AuthRepository {
   }
 
   async register(registerUser: RegisterUserDto): Promise<void> {
-    const userExists = this.users.find(user => user.email === registerUser.email);
+    const userExists = this.users.find(
+      user => user.email === registerUser.email || user.username === registerUser.username
+    );
 
     if (userExists) {
-      throw new HttpException('There is already a user with this email!', HttpStatus.CONFLICT);
+      if (userExists.email === registerUser.email) {
+        throw new HttpException('There is already a user with this email!', HttpStatus.CONFLICT);
+      }
+      throw new HttpException('There is already a user with this username!', HttpStatus.CONFLICT);
     }
 
     const hashedPassword = await this.hashService.hash(registerUser.password);

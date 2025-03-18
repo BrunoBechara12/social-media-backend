@@ -1,4 +1,5 @@
 import { InMemoryAuthRepository } from "@test/repositories/InMemoryAuth.repository";
+import { InMemoryUserRepository } from "@test/repositories/InMemoryUser.repository";
 import { Register } from "../Register";
 import { HashServiceProtocol } from "../../infra/adapters/hash/hash.service";
 import { MakeRegisterUser } from "@test/factories/Auth.factory";
@@ -6,6 +7,7 @@ import { HttpException, HttpStatus } from "@nestjs/common";
 
 describe('Register user', () => {
   let inMemoryAuthRepository: InMemoryAuthRepository;
+  let inMemoryUserRepository: InMemoryUserRepository;
   let register: Register;
   let hashService: HashServiceProtocol;
 
@@ -15,7 +17,8 @@ describe('Register user', () => {
       compare: jest.fn().mockResolvedValue(true)
     };
     inMemoryAuthRepository = new InMemoryAuthRepository(hashService);
-    register = new Register(inMemoryAuthRepository, hashService);
+    inMemoryUserRepository = new InMemoryUserRepository();
+    register = new Register(inMemoryAuthRepository, inMemoryUserRepository, hashService);
   });
 
   it('should register a new user', async () => {
@@ -37,8 +40,21 @@ describe('Register user', () => {
 
     await register.execute(userDto);
 
-    await expect(register.execute(userDto)).rejects.toThrow(
-      new HttpException('There is already a user with this email!', HttpStatus.CONFLICT)
-    );
+    await expect(register.execute(userDto)).rejects.toThrow('There is already a user with this email!');
+  });
+
+  it('should not register a user with an existing username', async () => {
+    const firstUser = MakeRegisterUser({
+      username: 'testuser',
+      email: 'test@example.com'
+    });
+    await register.execute(firstUser);
+
+    const secondUser = MakeRegisterUser({
+      username: 'testuser',
+      email: 'different@email.com'
+    });
+
+    await expect(register.execute(secondUser)).rejects.toThrow('There is already a user with this username!');
   });
 });
