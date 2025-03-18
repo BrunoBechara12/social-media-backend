@@ -110,18 +110,6 @@ npx prisma migrate deploy
 - The API will be available at: http://localhost:3000
 - The PostgreSQL database will be available at: localhost:5432
 
-## 3. Verifying the Installation
-
-To verify that all services are running correctly, you can use:
-
-#### For **production** environment
-```docker compose -f docker-compose.prod.yml ps```
-
-#### For **development** environment
-```docker compose -f docker-compose.dev.yml ps```
-
-All containers should have the status "Up".
-
 ## Api Endpoints
 
 ## User
