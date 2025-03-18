@@ -29,6 +29,7 @@ services:
       - JWT_TTL=${JWT_TTL}
     depends_on:
       - database
+    image: nestjs
     restart: always
     volumes:
       - ./tsconfig.json:/app/tsconfig.json
