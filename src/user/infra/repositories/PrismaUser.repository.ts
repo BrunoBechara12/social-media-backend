@@ -23,6 +23,26 @@ export class PrismaUserRepository implements UserRepository {
     return user
   }
 
+  async getByEmail(email: string): Promise<User | null> {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        email: email
+      }
+    });
+
+    return user;
+  }
+
+  async getByUsername(username: string): Promise<User | null> {
+    const user = await this.prismaService.user.findUnique({
+      where: {
+        username: username
+      }
+    });
+
+    return user;
+  }
+
   async updateProfile(UpdateUser: UpdateProfileDto): Promise<void> {
     await this.prismaService.user.update({
       where: {
@@ -39,6 +59,5 @@ export class PrismaUserRepository implements UserRepository {
       },
       data: UpdateUser
     })
-  }
-  
+  }  
 }

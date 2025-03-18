@@ -12,12 +12,14 @@ import { ConfigModule } from '@nestjs/config';
 import jwtConfig from './infra/adapters/config/jwt.config';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthTokenGuard } from './infra/adapters/guards/auth-token.guard';
+import { UserModule } from '@src/user/user.module';
 
 @Global()
 @Module({
   imports: [
     ConfigModule, 
     DatabaseModule, 
+    UserModule,
     ConfigModule.forFeature(jwtConfig), 
     JwtModule.registerAsync(jwtConfig.asProvider())
   ],
