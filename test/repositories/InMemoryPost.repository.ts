@@ -3,6 +3,7 @@ import { UpdatePostDto } from "src/post/infra/dtos/UpdatePost.dto";
 import { PostRepository } from "src/post/use-cases/ports/Post.repository";
 import { HttpException, HttpStatus } from "@nestjs/common";
 import { User } from "@prisma/client";
+import { PostResponseDto } from "src/post/infra/dtos/PostResponse.dto";
 
 export class InMemoryPostRepository implements PostRepository {
   public posts: Post[] = [];
@@ -57,8 +58,8 @@ export class InMemoryPostRepository implements PostRepository {
     this.posts = this.posts.filter(post => post.id !== id);
   }
 
-  async getAll(): Promise<Post[]> {
-    return this.posts;
+  async getAll(): Promise<PostResponseDto[]> {
+    return this.posts as PostResponseDto[];
   }
 
   async getById(id: number): Promise<Post | null> {
